@@ -1,0 +1,66 @@
+[
+    {
+        "title": "Kind of Blue",
+        "artist": "Miles Davis",
+        "year": 1959,
+        "genre": "Jazz",
+        "facts": "A landmark in modal jazz and one of the best-selling jazz albums of all time.",
+        "art": "https://upload.wikimedia.org/wikipedia/en/9/9c/MilesDavisKindofBlue.jpg"
+    },
+    {
+        "title": "Pet Sounds",
+        "artist": "The Beach Boys",
+        "year": 1966,
+        "genre": "Pop/Rock",
+        "facts": "Influential in the development of psychedelic and progressive rock.",
+        "art": "https://upload.wikimedia.org/wikipedia/en/b/bb/PetSoundsCover.jpg"
+    },
+    {
+        "title": "Abbey Road",
+        "artist": "The Beatles",
+        "year": 1969,
+        "genre": "Rock",
+        "facts": "Features iconic tracks like 'Come Together' and 'Here Comes the Sun'.",
+        "art": "https://upload.wikimedia.org/wikipedia/en/4/42/Beatles_-_Abbey_Road.jpg"
+    },
+    {
+        "title": "Blue",
+        "artist": "Joni Mitchell",
+        "year": 1971,
+        "genre": "Folk",
+        "facts": "A deeply personal and influential album in the singer-songwriter genre.",
+        "art": "https://upload.wikimedia.org/wikipedia/en/3/3b/Joni_Mitchell_-_Blue.png"
+    },
+    {
+        "title": "Thriller",
+        "artist": "Michael Jackson",
+        "year": 1982,
+        "genre": "Pop",
+        "facts": "The best-selling album of all time, blending pop, rock, and R&B.",
+        "art": "https://upload.wikimedia.org/wikipedia/en/5/55/Michael_Jackson_-_Thriller.png"
+    },
+    {
+        "title": "OK Computer",
+        "artist": "Radiohead",
+        "year": 1997,
+        "genre": "Alternative Rock",
+        "facts": "Critically acclaimed for its complex production and themes of alienation.",
+        "art": "https://upload.wikimedia.org/wikipedia/en/a/a1/Radiohead.okcomputer.albumart.jpg"
+    },
+    {
+        "title": "To Pimp a Butterfly",
+        "artist": "Kendrick Lamar",
+        "year": 2015,
+        "genre": "Hip-Hop",
+        "facts": "Praised for its ambitious scope and social commentary.",
+        "art": "https://upload.wikimedia.org/wikipedia/en/9/9e/To_Pimp_a_Butterfly_cover.png"
+    },
+    {
+        "title": "Fetch the Bolt Cutters",
+        "artist": "Fiona Apple",
+        "year": 2020,
+        "genre": "Alternative",
+        "facts": "Celebrated for its raw production and lyrical depth.",
+        "art": "https://upload.wikimedia.org/wikipedia/en/0/0f/Fiona_Apple_-_Fetch_the_Bolt_Cutters.png"
+    }
+]

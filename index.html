@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Daily Album Tracker</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .album-box { border: 1px solid #ccc; padding: 20px; margin-bottom: 20px; }
+        .actions button { margin-right: 10px; }
+        .log { margin-top: 30px; }
+        .genre { font-style: italic; color: #555; }
+    </style>
+</head>
+<body>
+    <h1>🎵 Daily Album Tracker</h1>
+    <div id="album-box" class="album-box">
+        <h2 id="album-title"></h2>
+        <p id="album-artist"></p>
+        <p id="album-year"></p>
+        <p class="genre" id="album-genre"></p>
+        <p id="album-facts"></p>
+        <div class="actions">
+            <button onclick="markAlbum('explore')">✅ Explore</button>
+            <button onclick="markAlbum('revisit')">🔁 Revisit</button>
+            <button onclick="markAlbum('familiar')">🎧 Familiar</button>
+            <button onclick="markAlbum('pass')">❌ Pass</button>
+        </div>
+        <div id="rating-box" style="margin-top:10px; display:none;">
+            <label for="rating">Rate this album (1-5 stars): </label>
+            <select id="rating">
+                <option value="">--</option>
+                <option value="1">⭐</option>
+                <option value="2">⭐⭐</option>
+                <option value="3">⭐⭐⭐</option>
+                <option value="4">⭐⭐⭐⭐</option>
+                <option value="5">⭐⭐⭐⭐⭐</option>
+            </select>
+            <button onclick="saveRating()">Save Rating</button>
+        </div>
+    </div>
+
+    <div class="log">
+        <h3>📋 Your Album Log</h3>
+        <ul id="album-log"></ul>
+    </div>
+
+    <script>
+        const albums = [
+            {
+                title: "To Pimp a Butterfly",
+                artist: "Kendrick Lamar",
+                year: 2015,
+                genre: "Hip-Hop",
+                facts: "Critically acclaimed for its ambitious scope and social commentary."
+            },
+            {
+                title: "Rumours",
+                artist: "Fleetwood Mac",
+                year: 1977,
+                genre: "Rock",
+                facts: "One of the best-selling albums of all time, known for its emotional intensity."
+            },
+            {
+                title: "Fetch the Bolt Cutters",
+                artist: "Fiona Apple",
+                year: 2020,
+                genre: "Alternative",
+                facts: "Praised for its raw production and lyrical depth."
+            },
+            {
+                title: "Channel Orange",
+                artist: "Frank Ocean",
+                year: 2012,
+                genre: "R&B",
+                facts: "Won a Grammy and redefined modern R&B."
+            },
+            {
+                title: "Blue",
+                artist: "Joni Mitchell",
+                year: 1971,
+                genre: "Folk",
+                facts: "A landmark in confessional songwriting."
+            }
+        ];
+
+        let currentAlbum = {};
+
+        function getRandomAlbum() {
+            const index = Math.floor(Math.random() * albums.length);
+            currentAlbum = albums[index];
+            document.getElementById("album-title").innerText = currentAlbum.title;
+            document.getElementById("album-artist").innerText = "Artist: " + currentAlbum.artist;
+            document.getElementById("album-year").innerText = "Year: " + currentAlbum.year;
+            document.getElementById("album-genre").innerText = "Genre: " + currentAlbum.genre;
+            document.getElementById("album-facts").innerText = currentAlbum.facts;
+            document.getElementById("rating-box").style.display = "none";
+        }
+
+        function markAlbum(action) {
+            const log = JSON.parse(localStorage.getItem("albumLog") || "[]");
+            log.push({
+                title: currentAlbum.title,
+                artist: currentAlbum.artist,
+                year: currentAlbum.year,
+                genre: currentAlbum.genre,
+                action: action,
+                rating: null
+            });
+            localStorage.setItem("albumLog", JSON.stringify(log));
+            document.getElementById("rating-box").style.display = (action === "explore" || action === "revisit") ? "block" : "none";
+            updateLog();
+        }
+
+        function saveRating() {
+            const rating = document.getElementById("rating").value;
+            const log = JSON.parse(localStorage.getItem("albumLog") || "[]");
+            log[log.length - 1].rating = rating;
+            localStorage.setItem("albumLog", JSON.stringify(log));
+            updateLog();
+        }
+
+        function updateLog() {
+            const log = JSON.parse(localStorage.getItem("albumLog") || "[]");
+            const logList = document.getElementById("album-log");
+            logList.innerHTML = "";
+            log.forEach(entry => {
+                const li = document.createElement("li");
+                li.innerText = `${entry.title} by ${entry.artist} (${entry.year}) - ${entry.action}${entry.rating ? ` - Rated: ${entry.rating}⭐` : ""}`;
+                logList.appendChild(li);
+            });
+        }
+
+        getRandomAlbum();
+        updateLog();
+    </script>
+</body>
+</html>
